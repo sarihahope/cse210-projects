@@ -4,7 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("What is your grade percentage? ");
+        DisplayMenu ();
+        Console.Write("Please select an Option: ");
         string answer = Console.ReadLine();
         int percent = int.Parse(answer);
 
@@ -40,6 +41,18 @@ class Program
             {
                 Console.WriteLine("Better luck next time!");
             }
+
+
+        static void DisplayMenu()
+        {
+
+            Console.WriteLine("Please select an option:");
+            Console.WriteLine("1. Enter an Entry");
+            Console.WriteLine("2. Display Journal Entries");
+            Console.WriteLine("3. Save Journal Entries");
+            Console.WriteLine("4. Load Journal Entries");
+            Console.WriteLine("5. Quit");
+        }
 
     }
 }
