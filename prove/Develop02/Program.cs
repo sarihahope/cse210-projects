@@ -1,58 +1,41 @@
-using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        string answer = "0";
-
+class Program {
+    static void Main(string[] args) {
         Journal journal = new Journal();
+        bool running = true;
+        while (running) {
+        Console.WriteLine("--- Journal Program ---");
+        Console.WriteLine("1. Write new entry");
+        Console.WriteLine("2. Display journal");
+        Console.WriteLine("3. Load journal from file");
+        Console.WriteLine("4. Save journal to file");
+        Console.WriteLine("5. Exit ");
+        Console.Write("Enter choice: ");
+        string choice = Console.ReadLine();
 
-            do
-
-            { 
-                
-                DisplayMenu ();
-                Console.Write("Please select an Option: ");
-                answer = Console.ReadLine();
-                Console.WriteLine();
-
-  
-                if (answer == "1")
-                {
-                    journal.journalAdd();
-                }
-
-                if (answer == "2")
-                {
-                    journal.DisplayEntry();
-                }
-
-                if (answer == "3")
-                {
-                    journal.saveFile();
-                }
-
-                if (answer == "4")
-                {
-                    journal.loadFile();
-                }
-            }
-        while(answer != "5");
-    
-
-            static void DisplayMenu()
-            {
-
-                Console.WriteLine("Please select an option:");
-                Console.WriteLine();
-                Console.WriteLine("1. Enter an Entry");
-                Console.WriteLine("2. Display Journal Entries");
-                Console.WriteLine("3. Save Journal Entries");
-                Console.WriteLine("4. Load Journal Entries");
-                Console.WriteLine("5. Quit");
-                Console.WriteLine();
-            }
-    
+        switch (choice) {
+            case "1":
+                journal.journalAdd();
+                break;
+            case "2":
+                journal.DisplayEntry();
+                break;
+            case "3":
+                Console.Write("Enter filename: ");
+                string filename = Console.ReadLine();
+                journal.LoadJournal(filename);
+                break;
+            case "4":
+                Console.Write("Enter filename: ");
+                filename = Console.ReadLine();
+                journal.SaveJournal(filename);
+                break;
+            case "5":
+                running = false;
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Try again.");
+                break;
+        }
     }
+}
 }

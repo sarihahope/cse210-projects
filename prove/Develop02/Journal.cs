@@ -3,7 +3,7 @@ using System.IO;
 
 public class Journal
     {
-        public List<Entry>_entries = new List<Entry>();
+        public static List<Entry>_entries = new List<Entry>();
 
 
 
@@ -28,37 +28,32 @@ public class Journal
             }
         }
 
-        public void saveFile()
-        {
-
-                Console.WriteLine("Saving to file..... ");
-                string _fileName = "entries.txt";
-
-                using (StreamWriter outputfile = new StreamWriter(_fileName))
-                {
-                        foreach (var Entry in _entries)
-                        {
-                            outputfile.WriteLine($"{_entries}");
-                        }
-                }
-        }
-
-
-        public void loadFile()
-        {
-                Console.WriteLine("Loading from List.....");
-                 string _fileName = "entries.csv";
-                 string[] lines = System.IO.File.ReadAllLines(_fileName);
-
-                 foreach (string line in lines)
-                 {
-                    string[] parts = line.Split(",");
-
-                    string dateTime = parts[0];
-                    string JournalPrompt = parts[1];
-                    string journalEntry = parts[2];
-
-                 }
-
+    public void LoadJournal(string filename) {
+        if (File.Exists(filename)) {
+            _entries = new List<Entry>();
+            string[] lines = File.ReadAllLines(filename);
+            for (int i = 0; i < lines.Length; i += 3) {
+                string _prompt = lines[i];
+                string _response = lines[i+1];
+                //DateTime date = DateTime.Parse(lines[i+2]);
+                Entry entry = new Entry(_prompt, _response);
+                _entries.Add(entry);
+            }
+            Console.WriteLine("Journal loaded from " + filename);
+        } else {
+            Console.WriteLine("File not found.");
         }
     }
+
+    public void SaveJournal(string filename) {
+        List<string> lines = new List<string>();
+        for (int i = 0; i < _entries.Count; i++) {
+            Entry entry = _entries[i];
+            lines.Add(entry._prompt);
+            lines.Add(entry._entryText);
+            //lines.Add(entry.date.ToString());
+        }
+        File.WriteAllLines(filename, lines);
+        Console.WriteLine("Journal saved to" + filename);
+    }
+}
