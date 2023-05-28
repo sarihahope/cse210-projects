@@ -5,8 +5,18 @@ public class Entry
     public string _entryText;
     public string _fullEntry;
     public string _dateEntry;
+    private string prompt;
+    private string entryText;
 
+    public Entry()
+    {
+    }
 
+    public Entry(string prompt, string entryText)
+    {
+        this.prompt = prompt;
+        this.entryText = entryText;
+    }
 
     public string dateTime()
     {
@@ -17,8 +27,6 @@ public class Entry
     }
 
 
-    
-    
     public string displayFullText ()
     {
 
