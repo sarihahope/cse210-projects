@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace GoalTracker
 
-{  
 
 public class SimpleGoal : Goals
 {
@@ -15,5 +13,4 @@ public class SimpleGoal : Goals
         Completed = true;
         Console.WriteLine($" '{_name}' has been completed, you earned {_pointsGained} points.");
     }
-}
 }

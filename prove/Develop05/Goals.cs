@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace GoalTracker
-
-{    
+    
     public abstract class Goals
     {
     public string _name { get; set; }
@@ -10,11 +8,13 @@ namespace GoalTracker
     public bool Completed { get; set;}
 
     private static List<Goals> _goals = new List<Goals>();
+    private string _nameOfGoal;
+    private int _points;
 
-        public Goals(string _name, int _pointsGained)
+    public Goals(string _name, int _pointsGained)
         {
-            _name = _nameOfGoal;
-            _pointsGained = _points;
+            _nameOfGoal = _name;
+            _points = _pointsGained;
 
         }
 
@@ -111,7 +111,8 @@ namespace GoalTracker
         Console.WriteLine("Loaded.");
     }
     }
-    }
+
+    
 
 
 

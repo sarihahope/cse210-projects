@@ -1,9 +1,5 @@
 using System;
 using System.Collections.Generic;
-namespace GoalTracker
-
-{  
-
 
 public class ChecklistGoal : Goals
 {
@@ -28,4 +24,5 @@ public class ChecklistGoal : Goals
         }
     }
 }
-}
+
+

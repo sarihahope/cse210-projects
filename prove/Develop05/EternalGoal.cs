@@ -1,9 +1,5 @@
 using System;
 using System.Collections.Generic;
-namespace GoalTracker
-
-{  
-
 
 public class EternalGoal : Goals
 {
@@ -15,5 +11,4 @@ public class EternalGoal : Goals
     {
         Console.WriteLine($"You recorded progress for eternal goal '{_name}'. You earned {_pointsGained} points.");
     }
-}
 }
